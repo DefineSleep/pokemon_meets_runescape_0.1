@@ -2,15 +2,23 @@ extends Node
 
 
 var player_stats : Dictionary =  {}
-var player_moves : Array = []
 
 
+var player_moves : Array = [
+	all_moves[1],
+	all_moves[2]
 
+
+]
+
+
+# can put all this in json and load it , use quick arrays and dicts for now
 var all_moves : Array = [
 	{
 		"move_name" : "Fire Strike",
 		"move_power" : 100,
-		"move_accuracy" : 100
+		"move_accuracy" : 100,
+		"move_cooldown" : 2 # calculated in turns TODO: make a turn counter
 
 
 
@@ -19,6 +27,13 @@ var all_moves : Array = [
 		"move_name" : "ice ball",
 		"move_power" : 150,
 		"move_accuracy" : 80,
+		"move_cooldown" : 1
+	},
+	{
+		"move_name" : "Storm",
+		"move_power" : 200,
+		"move_accuracy" : 100,
+		"move_cooldown" : 3
 	},
 
 ]
@@ -68,10 +83,9 @@ func calculate_damage(level: int, attack: int, defense: int, attack_base_power: 
 	base_damage *= random_multiplier
 	#apply critical damage 
 	if critical == true:
-		base_damage *= 2 
+		base_damage *= 1.5 
 		printerr("CRITICAL HIT")
 	elif critical == false:
 		printerr("no crit ")
-		pass
 	#return the final damage as an integer
 	return int(base_damage)
