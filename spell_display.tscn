@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cucj4jauxd12d"]
+
+[node name="spell_display" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.405
+anchor_bottom = 0.111
+offset_right = -219.2
+offset_bottom = 0.0399971
+
+[node name="cast_button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "CAST!"
+
+[node name="spell_name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "name: Testname"
+
+[node name="spell_damage" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "dmg: 100"
