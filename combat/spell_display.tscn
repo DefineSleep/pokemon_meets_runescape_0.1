@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cucj4jauxd12d"]
+[gd_scene load_steps=2 format=3 uid="uid://cucj4jauxd12d"]
+
+[ext_resource type="Script" path="res://combat/spell_display.gd" id="1_rv443"]
 
 [node name="spell_display" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_rv443")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

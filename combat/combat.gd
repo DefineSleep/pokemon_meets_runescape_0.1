@@ -13,7 +13,10 @@ func combat_starts(_enemy):
 	pass
 
 func import_player_equiped_moves_to_menu():
-	pass
+	var moves_equiped = Global.player_moves # Array of moves, 
+	# for each moves in array , instantiate move display with information attached to it 
+	
+	
 	
 func spawn_enemy_with_random_stats():
 	pass
