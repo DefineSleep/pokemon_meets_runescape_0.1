@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1ymug51gg1wk"]
+[gd_scene load_steps=11 format=3 uid="uid://c1ymug51gg1wk"]
 
 [ext_resource type="Theme" uid="uid://dtwht8jmrvwlb" path="res://assets/game_theme.tres" id="1_sf245"]
 [ext_resource type="Script" path="res://combat/combat.gd" id="1_t1v5l"]
 [ext_resource type="Texture2D" uid="uid://dqlv6ilhc708n" path="res://assets/Pixel Art GUI Elements.png" id="2_glje3"]
+[ext_resource type="Script" path="res://enemy_object.gd" id="3_2iwbl"]
 [ext_resource type="Texture2D" uid="uid://dlswwo0wt54iu" path="res://assets/image-removebg-preview.png" id="3_r8t6b"]
 [ext_resource type="Texture2D" uid="uid://cw1f0ffuk4t5o" path="res://assets/enemy_combat.png" id="4_ydmyc"]
 [ext_resource type="PackedScene" uid="uid://cucj4jauxd12d" path="res://combat/spell_display.tscn" id="6_4nx0j"]
@@ -24,6 +25,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_sf245")
 script = ExtResource("1_t1v5l")
+
+[node name="combat_enemy" type="Node" parent="."]
+script = ExtResource("3_2iwbl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -109,7 +113,40 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="damage_message_for_chatbox" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+[node name="damage_message" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message2" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message3" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message4" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message5" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message6" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message7" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message8" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message9" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message10" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message11" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
+layout_mode = 2
+
+[node name="damage_message12" parent="dialog_panel/MarginContainer/ScrollContainer/message_VBoxContainer" instance=ExtResource("8_ipfbt")]
 layout_mode = 2
 
 [node name="menu_panel" type="PanelContainer" parent="."]
@@ -210,11 +247,3 @@ layout_mode = 2
 
 [node name="spell_display8" parent="player_spell_container/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_4nx0j")]
 layout_mode = 2
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "damage print"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

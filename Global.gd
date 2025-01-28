@@ -1,7 +1,7 @@
 extends Node
 
 
-var player_data : Dictionary = {
+@onready var player_data : Dictionary = {
 	"max_health" : 100,
 	"current_health" : 100,
 
@@ -25,15 +25,16 @@ var player_data : Dictionary = {
 
 }
 
-var player_moves : Array = [
+@onready var player_moves : Array = [
 	all_moves[1],
 	all_moves[2],
 	all_moves[3],
-	all_moves[5]
+	all_moves[0]
 	
 
 
 ]
+
 
 
 # can put all this in json and load it , use quick arrays and dicts for now
@@ -71,6 +72,7 @@ var all_moves : Array = [
 	},
 
 ]
+
 
 
 var all_enemies : Array = [

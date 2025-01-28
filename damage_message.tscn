@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhjq4xutti2am"]
+
+[ext_resource type="Script" path="res://damage_message.gd" id="1_dh0yx"]
+
+[node name="damage_message_for_chatbox" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_dh0yx")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "test"

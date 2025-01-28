@@ -2,6 +2,8 @@ extends Node
 
 class_name combat_enemy_object
 
+var enemy_name : String
+
 var enemy_max_health : int
 var enemy_current_health : int
 
