@@ -26,8 +26,13 @@ func import_player_equiped_moves_to_menu():
 	
 	
 	
+	
+	
 func spawn_enemy_with_random_stats():
 	var enemy_spawned = COMBAT_ENEMY.instantiate()
+	
+	
+	
 	
 	
 	
@@ -36,7 +41,10 @@ func spawn_enemy_with_random_stats():
 
 
 
-
+func randomize_enemy_stats()->int:
+	return 0
+	
+	
 
 
 

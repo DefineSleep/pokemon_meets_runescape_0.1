@@ -4,6 +4,11 @@ class_name combat_enemy_object
 
 var enemy_name : String
 
+
+var enemy_total_stat_pool : int
+
+
+
 var enemy_max_health : int
 var enemy_current_health : int
 

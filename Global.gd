@@ -75,13 +75,15 @@ var all_moves : Array = [
 
 
 
+
 var all_enemies : Array = [
 	{
 		"enemy_name" : "Globin",
+		"total_stat_pool" : 200,
 		"base_max_health": 300,
-		"base_attack" : 100,
-		"base_defense" : 200,
-		"base_speed" : 50,
+		"base_attack" : 10,
+		"base_defense" : 20,
+		"base_speed" : 5,
 		"moves" : {
 			"name" : "Charge!",
 			"base_power":100,
@@ -90,10 +92,11 @@ var all_enemies : Array = [
 	},
 	{
 		"enemy_name" : "Slime",
+		"total_stat_pool" : 200,
 		"base_max_health": 120,
-		"base_attack" : 50,
-		"base_defense" : 40,
-		"base_speed" : 20,
+		"base_attack" : 5,
+		"base_defense" : 4,
+		"base_speed" : 2,
 		"moves" : {
 			"name" : "Splatter",
 			"base_power": 30,
@@ -102,10 +105,11 @@ var all_enemies : Array = [
 	},
 	{
 		"enemy_name" : "Bandit",
+		"total_stat_pool" : 250,
 		"base_max_health": 200,
-		"base_attack" : 80,
-		"base_defense" : 70,
-		"base_speed" : 60,
+		"base_attack" : 8,
+		"base_defense" : 7,
+		"base_speed" : 6,
 		"moves" : {
 			"name" : "Ambush Strike",
 			"base_power": 50,
@@ -136,11 +140,6 @@ var all_enemies : Array = [
 			"accuracy": 80
 		},
 	}
-	
-	
-	
-	
-	
 ]
 
 
