@@ -88,7 +88,7 @@ var all_enemies : Array = [
 			"name" : "Charge!",
 			"base_power":100,
 			"accuracy":90
-		},	
+		},
 	},
 	{
 		"enemy_name" : "Slime",

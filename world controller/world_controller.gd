@@ -19,8 +19,8 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	show_menu(event)
-	show_combat(event)
-	
+	start_combat(event)
+	end_combat(event)
 			
 			
 			
@@ -38,18 +38,21 @@ func show_menu(input):
 	else: return
 
 
-func show_combat(input):
-	if input.is_action_pressed("combat"):
+func end_combat(input):
+	if input.is_action_pressed("combat_end"):
 		if combat.is_visible():
 			combat.hide()
 			is_player_in_combat = false
 			get_tree().paused = false
 			overworld.show()
-		else:
+			
+func start_combat(input):
+		if input.is_action_pressed("combat_start"):
 			combat.show()
 			is_player_in_combat = true
 			get_tree().paused = true
 			overworld.hide()
+			combat.combat_start()
 			
 func combat_layer_processing_handler():
 	if is_player_in_combat:
