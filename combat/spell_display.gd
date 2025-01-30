@@ -30,7 +30,7 @@ var move_crit_chance : int # base from 100% so 90 is 90%
 
 func _ready() -> void:
 	#update display 
-	cast_button.text = "Y"
+	cast_button.text = "Cast"
 	spell_name.text = str(move_name)
 	spell_damage.text = str(move_power)
 	#print_spell_stats()

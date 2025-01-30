@@ -1,7 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dtwht8jmrvwlb"]
 
-[ext_resource type="FontFile" uid="uid://kxlkifrcm45f" path="res://assets/Minecraft.ttf" id="1_f4h0l"]
+[ext_resource type="FontFile" uid="uid://dti4sk4edfdry" path="res://assets/m3x6.ttf" id="2_3dcgr"]
 
 [resource]
-Button/fonts/font = ExtResource("1_f4h0l")
-Label/fonts/font = ExtResource("1_f4h0l")
+Button/fonts/font = ExtResource("2_3dcgr")
+Label/fonts/font = ExtResource("2_3dcgr")
+ProgressBar/fonts/font = ExtResource("2_3dcgr")

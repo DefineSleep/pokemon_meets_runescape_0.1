@@ -18,7 +18,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.405
 anchor_bottom = 0.111
-offset_right = -219.2
+offset_right = -0.200012
 offset_bottom = 0.0399971
 
 [node name="cast_button" type="Button" parent="HBoxContainer"]

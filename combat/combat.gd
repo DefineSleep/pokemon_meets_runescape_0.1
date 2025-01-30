@@ -17,6 +17,7 @@ const ORC_ENEMY_IMAGE = preload("res://assets/enemy_combat.png")
 @onready var player_turn: Array = ["",1,1]
 @onready var turn_base_order: Array = [player_turn, enemy_turn]
 @onready var world_controller: Node = $"../.."
+@onready var scroll_container: ScrollContainer = $dialog_panel/MarginContainer/ScrollContainer
 
 
 #test
@@ -146,16 +147,7 @@ func apply_damage_master():
 			printerr("player died")
 			world_controller.combat_finished(false)
 		else:apply_damage_from_enemy(enemy_turn)
-	
-
-
-
-
 #---------------------------------
-
-
-
-
 # Apply Damage
 func apply_damage_from_player(_array: Array):
 	var move_name: String = _array[0]
@@ -187,18 +179,28 @@ func health_bar_calculations(_current_health, _progress_bar_node):
 	_progress_bar_node.value = _current_health
 
 # Utility Functions
+
+func scroll_to_bottom() -> void:
+	await get_tree().process_frame  # Wait for UI to update
+	await get_tree().process_frame  # Wait an extra frame (ensures resizing)
+	if scroll_container:  # Check if still valid
+		scroll_container.set_v_scroll(scroll_container.get_v_scroll_bar().max_value)
+
+
 func write_and_instentiate_damage_message(_damage_amount, _entity_attacking_name, _move_used):
 	var damage_messages = DAMAGE_MESSAGE.instantiate()
 	damage_messages.entity_name = _entity_attacking_name
 	damage_messages.damage_numbers = _damage_amount
 	damage_messages.move_used_name = _move_used
 	message_v_box_container.add_child(damage_messages)
+	scroll_to_bottom()
 
 func chatbox_basic_message(_string) -> void:
 	var messages = CHAT_MESSAGE.instantiate()
 	messages.message_to_print = _string
 	message_v_box_container.add_child(messages)
-
+	scroll_to_bottom()
+	
 func get_enemy_image(image_variable):
 	enemy_image.texture = image_variable
 
