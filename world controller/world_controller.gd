@@ -61,3 +61,9 @@ func combat_layer_processing_handler():
 	elif !is_player_in_combat:
 		combat.set_process(false)
 		combat.set_process_input(false)
+
+func combat_finished(_win_bool:bool):
+	if _win_bool == true:
+		printerr("battle won")
+	if _win_bool == false:
+		printerr("battle lost")

@@ -49,38 +49,44 @@ var all_moves : Array = [
 		"move_name" : "Fire Strike",
 		"move_power" : 100,
 		"move_accuracy" : 100,
-		"move_cooldown" : 2 # calculated in turns TODO: make a turn counter
+		"move_cooldown" : 2, # calculated in turns TODO: make a turn counter
+		"critical_chance" : 10
 	},
 	{
 		"move_name" : "ice ball",
 		"move_power" : 150,
 		"move_accuracy" : 80,
-		"move_cooldown" : 1
+		"move_cooldown" : 1,
+		"critical_chance" : 10
 		
 	},
 	{
 		"move_name" : "Storm",
 		"move_power" : 200,
 		"move_accuracy" : 100,
-		"move_cooldown" : 3
+		"move_cooldown" : 3,
+		"critical_chance" : 10
 	},
 	{
 		"move_name" : "Snow Ball",
 		"move_power" : 50,
 		"move_accuracy" : 100,
-		"move_cooldown" : 0
+		"move_cooldown" : 0,
+		"critical_chance" : 10
 	},
 	{
 		"move_name" : "Sword Slash",
 		"move_power" : 75,
 		"move_accuracy" : 95,
-		"move_cooldown" : 0
+		"move_cooldown" : 0,
+		"critical_chance" : 10
 	},
 	{
 		"move_name" : "Goblin Spit",
 		"move_power" : 75,
 		"move_accuracy" : 95,
-		"move_cooldown" : 0
+		"move_cooldown" : 0,
+		"critical_chance" : 10
 	},
 
 ]
@@ -206,8 +212,8 @@ var all_enemy_items = [
 	
 func critical_yes_or_no(chance)-> bool: #chance is 
 	randomize()
-	var random_chance = randi_range(chance,100)
-	if random_chance >= 90:
+	var random_chance = randi_range(1,100)
+	if random_chance <= chance:
 		return true
 	else  : return false
 
