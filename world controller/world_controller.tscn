@@ -106,4 +106,5 @@ text = "MONEY"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="combat" parent="CanvasLayer" instance=ExtResource("2_1b30c")]
+unique_name_in_owner = true
 visible = false

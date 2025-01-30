@@ -89,6 +89,7 @@ var all_enemies : Array = [
 			"base_power":100,
 			"accuracy":90
 		},
+		"drops":[],
 	},
 	{
 		"enemy_name" : "Slime",
@@ -142,6 +143,7 @@ var all_enemies : Array = [
 	}
 ]
 
+var all_objects
 
 
 # GLOBAL FUNCTIONS 
