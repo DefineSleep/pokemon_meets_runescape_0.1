@@ -7,6 +7,7 @@ const ORC_ENEMY_IMAGE = preload("res://assets/enemy_combat.png")
 const CHAT_MESSAGE = preload("res://chat_message.tscn")
 
 @onready var enemy_health_bar: ProgressBar = $enemy_health_mana_energy_container/MarginContainer/VBoxContainer/enemy_health_bar
+@onready var player_health_bar: ProgressBar = $player_health_mana_energy_container/MarginContainer/VBoxContainer/player_health_bar
 
 
 @onready var combat_enemy_node: Node = $combat_enemy
@@ -17,13 +18,11 @@ const CHAT_MESSAGE = preload("res://chat_message.tscn")
 
 
 
-# 0movename , 1speed, 2damage
-#@onready var enemy_turn : Array = []
-#@onready var player_turn : Array = []
+ #0movename , 1speed, 2damage
+@onready var enemy_turn : Array = []
+@onready var player_turn : Array = []
 
 #turn_base_order = []
-@onready var player_turn = ["fire Strike",50, 25] #name,speed,damage
-@onready var enemy_turn = ["Sword Slash",75, 55] #name,speed,damage
 
 @onready var turn_base_order : Array = [player_turn,enemy_turn]
 
@@ -35,15 +34,90 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	health_bar_calculations(combat_enemy_node.enemy_current_health,enemy_health_bar)
+	health_bar_calculations(Global.player_data.current_health,player_health_bar)
+	
+	max_health_bar_calculations(combat_enemy_node.enemy_max_health,enemy_health_bar)
+	max_health_bar_calculations(Global.player_data.max_health,player_health_bar)
+	
 	end_combat_when_enemy_death()
 # ALL COMBAT FUNCTIONS
 
 
-func apply_enemy_inflicted_damage(_damage):
-	pass #TODO THIS RIGHT HERE WHEN I WAKE UP
+
+#-----------------------
+
+
+func player_spell_chosen_data_update(spell_name: String, spell_damage: int) -> void:
+	var entity_speed: int = Global.player_data.speed
+	player_turn.clear()
+	player_turn += [spell_name, entity_speed, spell_damage]
+	printerr("Player chose spell:", player_turn)
+
+#enemy_spell_chosen_data_update(Global.all_enemies[0].moves) gives goblin AI
+func enemy_spell_chosen_data_update(_enemy_spells:Array)->void:
+	var spells_to_use_1 = _enemy_spells[0]
+	var spells_to_use_2 = _enemy_spells[1]
+	var spells_to_use_3 = _enemy_spells[2]
+	var spells_to_use_4 = _enemy_spells[3]
+	randomize()
+	var random_number = randi_range(1,4 )
 	
-func apply_player_inflicted_damage(_damage):
+	match random_number:
+		1: printerr(spells_to_use_1)
+		2: printerr(spells_to_use_2)
+		3: printerr(spells_to_use_3)
+		4: printerr(spells_to_use_4)
+		
+
+
+
+#-----------------------
+	
+	
+
+
+func cleanup_after_combat_ends():
+	#cleanup spell display and all chat messages
+	for child in message_v_box_container.get_children():
+		child.queue_free()
+	for child in spell_v_container.get_children():
+		child.queue_free()
+		
+	
+func end_combat_when_enemy_death():
+	#if combat_enemy_node.enemy_current_health <= 0:
+		#printerr("enemy dead")
+	#else : printerr("enemy is alive")
 	pass
+
+
+
+
+
+
+
+
+func apply_damage_from_enemy(_array:Array):
+	var move_name : String = _array[0] #movename
+	#var move_speed : int #_array[1] #speed
+	var move_final_damage : int = _array[2] #damage
+	
+	Global.player_data.current_health -= move_final_damage
+	write_and_instentiate_damage_message(move_final_damage,combat_enemy_node.enemy_name,move_name)
+
+
+
+
+
+func apply_damage_from_player(_array:Array):
+	var move_name : String = _array[0] #movename
+	#var move_speed : int #_array[1] #speed
+	var move_final_damage : int = _array[2] #damage
+	combat_enemy_node.enemy_current_health -= move_final_damage
+	write_and_instentiate_damage_message(move_final_damage,Global.player_data.player_name,move_name)
+
+
+
 
 
 # takes in turn arrays and returns it sorted by speed
@@ -78,11 +152,6 @@ func clear_all_turn_arrays():
 
 
 
-func end_combat_when_enemy_death():
-	if combat_enemy_node.enemy_current_health <= 0:
-		printerr("enemy dead")
-	else : printerr("enemy is alive")
-	pass
 
 
 func combat_start(): # THIS FUNCTION IS CALLED WHEN start_combat() IN WORLD CONTROLLER IS CALLED
@@ -97,7 +166,7 @@ func health_bar_calculations(_current_health,_progress_bar_node):
 	_progress_bar_node.value=_current_health
 
 func spawn_goblin():
-	spawn_enemy_with_random_stats(randomize_enemy_stats(Global.all_enemies[0].total_stat_pool))
+	spawn_enemy_with_random_stats(randomize_enemy_stats(Global.all_enemies[0].total_stat_pool),Global.all_enemies[0].enemy_name)
 	get_enemy_image(ORC_ENEMY_IMAGE)
 	chatbox_basic_message(str(Global.all_enemies[0].enemy_name)+" has spawned")
 	max_health_bar_calculations(combat_enemy_node.enemy_max_health,enemy_health_bar)
@@ -115,8 +184,8 @@ func import_player_equiped_moves_to_menu(): #TODO change this if adding elements
 		spell_display_instance.move_power = move["move_power"]
 		spell_display_instance.move_accuracy = move["move_accuracy"]
 		spell_display_instance.move_cooldown = move["move_cooldown"]
-		
 		spell_display_instance.combat_enemy = $combat_enemy
+		spell_display_instance.spell_casted.connect(player_spell_chosen_data_update)
 		spell_v_container.add_child(spell_display_instance)
 		
 	
@@ -126,7 +195,7 @@ func get_enemy_image(image_variable): # TODO make this more efficient or cleaner
 
 
 	
-func spawn_enemy_with_random_stats(_stats : Array):
+func spawn_enemy_with_random_stats(_stats:Array, _enemy_name:String):
 	var health = _stats[0]
 	var defense = _stats[1]
 	var attack = _stats[2]
@@ -135,6 +204,7 @@ func spawn_enemy_with_random_stats(_stats : Array):
 	combat_enemy_node.enemy_defense = defense
 	combat_enemy_node.enemy_attack = attack
 	combat_enemy_node.enemy_speed = speed
+	combat_enemy_node.enemy_name = _enemy_name
 	
 	
 	combat_enemy_node.enemy_current_health = health
@@ -163,17 +233,6 @@ func randomize_enemy_stats(total_stats: int) -> Array:
 
 
 
-func player_does_damage_to_enemy(_spell_name,_damage,_entity_attacking):
-	write_and_instentiate_damage_message(_damage,_entity_attacking,_spell_name)
-
-func enemy_does_damage_to_player(_damage):
-	pass
-
-func cleanup_after_combat_ends():
-	pass
-
-
-
 func write_and_instentiate_damage_message(_damage_amount, _entity_attacking_name, _move_used): # PRETTY MUCH DONE
 	var damage_messages = DAMAGE_MESSAGE.instantiate()
 	damage_messages.entity_name = _entity_attacking_name
@@ -187,14 +246,11 @@ func chatbox_basic_message(_string)->void:
 	message_v_box_container.add_child(messages)
 
 
-func use_skill():
-	pass
 
 # TEST BUTTON
 func _on_button_pressed() -> void:
-	printerr(combat_enemy_node.enemy_max_health)
-	printerr(combat_enemy_node.enemy_defense)
-	printerr(combat_enemy_node.enemy_attack)
-	printerr(combat_enemy_node.enemy_speed)
+	apply_damage_from_player(player_turn)
+
 	
-	
+func _on_button_2_pressed() -> void:
+	apply_damage_from_enemy(enemy_turn)

@@ -159,6 +159,9 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="player_health_mana_energy_container/MarginContainer"]
 layout_mode = 2
 
+[node name="player_health_bar" type="ProgressBar" parent="player_health_mana_energy_container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="enemy_health_mana_energy_container" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -208,10 +211,26 @@ theme_override_constants/separation = 30
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "damage print"
+offset_left = 176.0
+offset_top = 184.0
+offset_right = 387.0
+offset_bottom = 208.0
+text = "FRIENDLY DOES DAMAGE"
 
 [node name="combat_enemy" parent="." instance=ExtResource("6_ep1ne")]
 
+[node name="Button2" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.422222
+anchor_right = 0.548437
+anchor_bottom = 0.466667
+offset_right = 8.0
+offset_bottom = 8.0
+text = "ENEMY DOES DAMAGE"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

@@ -2,7 +2,7 @@ extends Control
 
 class_name spell_display
 
-
+signal spell_casted(_name:String,_damage :int)
 
 @onready var cast_button: Button = $HBoxContainer/cast_button
 @onready var spell_name: Label = $HBoxContainer/spell_name
@@ -11,8 +11,12 @@ class_name spell_display
 
 var combat_enemy: Node = null
 
+
 var player_level : int 
-var player_attack : int 
+var player_phy_attack
+var player_mag_attack
+var player_phy_defense
+var player_mag_defense
 
 var enemy_defense : int
 
@@ -29,12 +33,17 @@ func _ready() -> void:
 	cast_button.text = "Y"
 	spell_name.text = str(move_name)
 	spell_damage.text = str(move_power)
-	print_spell_stats()
+	#print_spell_stats()
 	
 	#setplayer and enemy variables
-	player_level = Global.player_data.attack
-	player_attack = Global.player_data.defense
+	player_level = Global.player_data.player_level
+	player_phy_attack= Global.player_data.phy_attack
+	player_mag_attack= Global.player_data.mag_attack
+	player_phy_defense = Global.player_data.phy_defense
+	player_mag_defense = Global.player_data.mag_defense
 	enemy_defense = combat_enemy.enemy_defense
+	
+
 	
 func _process(delta: float) -> void:
 	pass
@@ -51,7 +60,9 @@ func print_spell_stats():
 	printerr("move_cooldown",move_cooldown)
 	printerr("enemy_defense",enemy_defense)
 	printerr("player_level",player_level)
-	printerr("player_attack",player_attack)
+	printerr("MAGplayer_attack",player_mag_attack)
+	printerr("PHYplayer_attack",player_phy_attack)
+
 	
 
 
@@ -65,12 +76,13 @@ func use_ability(_combat_enemy):
 	var damage_done : int
 	var hit_or_miss : bool = Global.accuracy_check(move_accuracy)
 	#if hit_or_miss == true:
-	damage_done = Global.calculate_damage(player_level,player_attack,enemy_defense,move_power,Global.critical_yes_or_no(move_crit_chance)) 
-	_combat_enemy.enemy_current_health -= damage_done
-	printerr("player did "+str(damage_done)+"to "+_combat_enemy.enemy_name)
-
+	damage_done = Global.calculate_damage(player_level,player_phy_attack,enemy_defense,move_power,Global.critical_yes_or_no(move_crit_chance)) 
+	return damage_done
 
 func _on_cast_button_pressed() -> void:
-	use_ability(combat_enemy)
-	printerr("ENEMY CURRENT HP",combat_enemy.enemy_current_health)
-	printerr("spell used :"+str(move_name))
+	var damage = use_ability(combat_enemy)
+	emit_signal("spell_casted", move_name, damage)  # Emit signal with spell name & damage
+
+
+
+	

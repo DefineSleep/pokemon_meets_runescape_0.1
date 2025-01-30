@@ -2,6 +2,9 @@ extends Node
 
 
 @onready var player_data : Dictionary = {
+	"player_name" : "Test_name",
+	"player_level" : 1,
+
 	"max_health" : 100,
 	"current_health" : 100,
 
@@ -11,9 +14,12 @@ extends Node
 	"max_energy" : 120,
 	"current_energy": 100,
 
-	"attack" : 23,
-	"defense" : 30, # should we do elemental defense or flat 
+	"phy_attack" : 23,
+	"mag_attack" : 23,
+	"phy_defense" : 30,
+	"mag_defense" : 30,
 	"speed" : 420,
+
 	"currency" : 0,
 	"inventory" : [],
 
@@ -70,6 +76,12 @@ var all_moves : Array = [
 		"move_accuracy" : 95,
 		"move_cooldown" : 0
 	},
+	{
+		"move_name" : "Goblin Spit",
+		"move_power" : 75,
+		"move_accuracy" : 95,
+		"move_cooldown" : 0
+	},
 
 ]
 
@@ -78,18 +90,15 @@ var all_moves : Array = [
 
 var all_enemies : Array = [
 	{
-		"enemy_name" : "Globin",
+		"enemy_name" : "Mage Globin",
 		"total_stat_pool" : 200,
 		"base_max_health": 300,
 		"base_attack" : 10,
 		"base_defense" : 20,
 		"base_speed" : 5,
-		"moves" : {
-			"name" : "Charge!",
-			"base_power":100,
-			"accuracy":90
-		},
+		"moves" : [all_moves[4],all_moves[5],all_moves[0],all_moves[1]],
 		"drops":[],
+		"equipment_transform":{}
 	},
 	{
 		"enemy_name" : "Slime",
@@ -103,6 +112,8 @@ var all_enemies : Array = [
 			"base_power": 30,
 			"accuracy": 90
 		},
+		"drops":[],
+		"equipment_transform":{}
 	},
 	{
 		"enemy_name" : "Bandit",
@@ -116,6 +127,8 @@ var all_enemies : Array = [
 			"base_power": 50,
 			"accuracy": 95
 		},
+		"drops":[],
+		"equipment_transform":{}
 	},
 	{
 		"enemy_name" : "Skeleton Warrior",
@@ -128,6 +141,8 @@ var all_enemies : Array = [
 			"base_power": 75,
 			"accuracy": 85
 		},
+		"drops":[],
+		"equipment_transform":{}
 	},
 	{
 		"enemy_name" : "Lich",
@@ -140,12 +155,50 @@ var all_enemies : Array = [
 			"base_power": 90,
 			"accuracy": 80
 		},
+		"drops":[],
+		"equipment_transform":{}
 	}
 ]
 
-var all_objects
+var all_game_items = [
+	{
+		"item_name":"Potion",
+		"affected_stat":"hp",
+		"effect_value":10,
+		},
+	{
+		"item_name":"i-Potion",
+		"affected_stat":"hp",
+		"effect_value":50,
+	},
+	{
+		"item_name":"i-Potion",
+		"affected_stat":"hp",
+		"effect_value":50,
+	},
+	{},
+	{},
+	{},
+	{},
+	{},
+]
+# phy_attack , mag_attack, phy_defense, mag_defense, speed
+var all_enemy_items = [
+	{
+		"parent_monster": all_enemies[0],
+		"item_name":"Goblin Mail",
+		"item_stat_range":[2,2,10,10,1],
+		"element":"neutral"
+	},
+	{
+		"parent_monster": all_enemies[1],
+		"item_name":"Slime Sword",
+		"item_stat_range":[20,20,0,0,4],
+		"element":"water"
+	},
 
 
+]
 # GLOBAL FUNCTIONS 
 
 	
