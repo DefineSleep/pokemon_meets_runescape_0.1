@@ -1,8 +1,33 @@
-[gd_scene load_steps=53 format=3 uid="uid://snbhe8ag3xbg"]
+[gd_scene load_steps=60 format=3 uid="uid://snbhe8ag3xbg"]
 
 [ext_resource type="Script" path="res://overworld_player/overworld_player.gd" id="1_eqlxg"]
 [ext_resource type="Texture2D" uid="uid://jln3xvnqkvfc" path="res://assets/Base Character - Premium/basic/idle.png" id="2_2o27j"]
 [ext_resource type="Texture2D" uid="uid://dcb5ycki8j8ok" path="res://assets/Base Character - Premium/basic/walk.png" id="2_kirup"]
+[ext_resource type="Texture2D" uid="uid://dn6julh1i8r5" path="res://assets/Base Character - Premium/farming/axe.png" id="2_ug55y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usuo7"]
+atlas = ExtResource("2_ug55y")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh5lg"]
+atlas = ExtResource("2_ug55y")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5nfa"]
+atlas = ExtResource("2_ug55y")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e180d"]
+atlas = ExtResource("2_ug55y")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1q15"]
+atlas = ExtResource("2_ug55y")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdimy"]
+atlas = ExtResource("2_ug55y")
+region = Rect2(400, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ajy1"]
 atlas = ExtResource("2_2o27j")
@@ -200,6 +225,29 @@ region = Rect2(592, 272, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_usuo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh5lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5nfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e180d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1q15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdimy")
+}],
+"loop": true,
+"name": &"axe_swing_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7ajy1")
 }, {
 "duration": 1.0,
@@ -388,6 +436,6 @@ script = ExtResource("1_eqlxg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ek2kp")
-animation = &"walk_left"
+animation = &"axe_swing_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

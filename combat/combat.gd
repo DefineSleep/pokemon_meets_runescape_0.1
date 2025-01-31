@@ -1,10 +1,10 @@
 extends Control
 
-const DAMAGE_MESSAGE = preload("res://damage_message.tscn")
-const COMBAT_ENEMY = preload("res://combat_enemy.tscn")
-const CHAT_MESSAGE = preload("res://chat_message.tscn")
-const ORC_ENEMY_IMAGE = preload("res://assets/enemy_combat.png")
+const DAMAGE_MESSAGE = preload("res://combat/damage_message.tscn")
+const COMBAT_ENEMY = preload("res://combat/combat_enemy.tscn")
+const CHAT_MESSAGE = preload("res://combat/chat_message.tscn")
 
+const ORC_ENEMY_IMAGE = preload("res://assets/enemy_combat.png")
 @onready var combat: Control = $"."
 @onready var enemy_health_bar: ProgressBar = $enemy_health_mana_energy_container/MarginContainer/VBoxContainer/enemy_health_bar
 @onready var player_health_bar: ProgressBar = $player_health_mana_energy_container/MarginContainer/VBoxContainer/player_health_bar

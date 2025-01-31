@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhjq4xutti2am"]
 
-[ext_resource type="Script" path="res://damage_message.gd" id="1_dh0yx"]
+[ext_resource type="Script" path="res://combat/damage_message.gd" id="1_dh0yx"]
 
 [node name="damage_message_for_chatbox" type="Control"]
 layout_mode = 3

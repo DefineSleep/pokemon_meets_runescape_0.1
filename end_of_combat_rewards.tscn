@@ -1,0 +1,188 @@
+[gd_scene load_steps=4 format=3 uid="uid://1jat60m6wjrv"]
+
+[ext_resource type="Theme" uid="uid://dtwht8jmrvwlb" path="res://assets/game_theme.tres" id="1_2s8v3"]
+[ext_resource type="Script" path="res://end_of_combat_rewards.gd" id="1_u2d0y"]
+[ext_resource type="FontFile" uid="uid://cr6f2yn4vypjg" path="res://assets/m6x11.ttf" id="3_2yq0o"]
+
+[node name="end_of_combat_rewards" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2s8v3")
+script = ExtResource("1_u2d0y")
+
+[node name="window_container" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.158333
+anchor_right = 0.698438
+anchor_bottom = 0.844444
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="window_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.999695
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0233778, 0.238367, 0.197671, 1)
+
+[node name="screen_title" type="Control" parent="window_container"]
+layout_mode = 1
+anchor_left = 0.031
+anchor_top = 0.016
+anchor_right = 0.973
+anchor_bottom = 0.19
+offset_left = 0.0949998
+offset_top = 0.0479999
+offset_right = -0.115005
+offset_bottom = 0.0699959
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="win_loss_label" type="Label" parent="window_container/screen_title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "WIN"
+horizontal_alignment = 1
+
+[node name="drop_screen" type="Control" parent="window_container"]
+layout_mode = 1
+anchor_left = 0.094
+anchor_top = 0.125388
+anchor_right = 0.909823
+anchor_bottom = 0.708441
+offset_left = 0.0299702
+offset_top = 0.0291233
+offset_right = -0.00508118
+offset_bottom = 0.0151291
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="window_container/drop_screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="window_container/drop_screen/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="window_container/drop_screen/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="window_container/drop_screen/Panel/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST ITEM DROP"
+horizontal_alignment = 1
+
+[node name="ok_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.483
+anchor_top = 0.711
+anchor_right = 0.517
+anchor_bottom = 0.772
+offset_left = -0.119995
+offset_top = 0.0399933
+offset_right = 0.119995
+offset_bottom = 0.0799866
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_2yq0o")
+text = "OK"
+
+[connection signal="pressed" from="ok_button" to="." method="_on_ok_button_pressed"]

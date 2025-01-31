@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
+	test_animation()
 
 func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("scroll_up"): # add camera zoom attached to this 
@@ -74,3 +75,6 @@ func play_animation(movement):
 			_animation.play("idle_down")
 		
 	
+func test_animation():
+	if Input.is_key_label_pressed(KEY_SPACE):
+		animated_sprite_2d.play("axe_swing_right")

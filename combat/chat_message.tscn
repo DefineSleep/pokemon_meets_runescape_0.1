@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpr0iitnody0b"]
 
-[ext_resource type="Script" path="res://chat_message.gd" id="1_v6m37"]
+[ext_resource type="Script" path="res://combat/chat_message.gd" id="1_v6m37"]
 
 [node name="chat_message" type="Control"]
 layout_mode = 3
